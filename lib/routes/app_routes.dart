@@ -3,7 +3,6 @@ import 'package:provider/provider.dart';
 import 'package:provider_example/provider/connectivity.dart';
 import 'package:provider_example/screens/consumer.dart';
 import 'package:provider_example/screens/home.dart';
-import 'package:provider_example/screens/jokes/jokes_categories.dart';
 import 'package:provider_example/screens/no_internet.dart';
 
 class AppRoutes {
@@ -21,8 +20,6 @@ class AppRoutes {
               return const ConsumerScreen();
             case Paths.noInternet:
               return const NoInternetScreen();
-            case Paths.jokesCategories:
-              return const JokesCategoriesScreen();
             default:
               return const HomeScreen();
           }
@@ -40,5 +37,4 @@ abstract class Paths {
   static const home = '/home';
   static const consumer = '/consumer';
   static const noInternet = '/no-internet';
-  static const jokesCategories = '/jokes-categories';
 }

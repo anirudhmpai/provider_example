@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:provider_example/provider/connectivity.dart';
 import 'package:provider_example/provider/counter.dart';
-import 'package:provider_example/provider/jokes_categories.dart';
 import 'package:provider_example/routes/app_routes.dart';
 import 'package:provider_example/screens/home.dart';
 
@@ -17,9 +16,6 @@ void main() {
       ),
       ChangeNotifierProvider(
         create: (context) => ConnectivityProvider(),
-      ),
-      ChangeNotifierProvider(
-        create: (context) => JokesCategoriesProvider(),
       )
     ],
     child: const MyApp(),
