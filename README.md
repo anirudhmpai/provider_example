@@ -1,4 +1,4 @@
-# provider_example
+# provider_structure
 
 A new Flutter project.
 
