@@ -1,11 +1,10 @@
-import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:provider_example/provider/connectivity.dart';
 import 'package:provider_example/provider/counter.dart';
+import 'package:provider_example/provider/jokes_categories.dart';
 import 'package:provider_example/routes/app_routes.dart';
 import 'package:provider_example/screens/home.dart';
-import 'package:provider_example/screens/no_internet.dart';
 
 GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
@@ -18,6 +17,9 @@ void main() {
       ),
       ChangeNotifierProvider(
         create: (context) => ConnectivityProvider(),
+      ),
+      ChangeNotifierProvider(
+        create: (context) => JokesCategoriesProvider(),
       )
     ],
     child: const MyApp(),
@@ -35,27 +37,8 @@ class MyApp extends StatelessWidget {
       navigatorKey: navigatorKey,
       onGenerateRoute: AppRoutes().onGenerateRoute,
       debugShowCheckedModeBanner: false,
-      home: StreamBuilder<ConnectivityResult>(
-          stream: Provider.of<ConnectivityProvider>(context).connectivityStream,
-          builder: (context, snapshot) {
-            if (snapshot.hasData) {
-              if (isNetworkAvailable(snapshot)) {
-                return const _Unfocus(child: HomeScreen());
-              } else {
-                return const NoInternetScreen();
-              }
-            } else {
-              return const NoInternetScreen();
-            }
-          }),
+      home: const _Unfocus(child: HomeScreen()),
     );
-  }
-
-  bool isNetworkAvailable(AsyncSnapshot<ConnectivityResult> snapshot) {
-    return snapshot.data == ConnectivityResult.mobile ||
-        snapshot.data == ConnectivityResult.wifi;
-    // || snapshot.data == ConnectivityResult.vpn ||
-    // snapshot.data == ConnectivityResult.ethernet;
   }
 }
 

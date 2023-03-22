@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:provider_example/provider/counter.dart';
+import 'package:provider_example/routes/routes.dart';
 
 class ConsumerScreen extends StatelessWidget {
   const ConsumerScreen({super.key});
@@ -10,14 +11,14 @@ class ConsumerScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Consumer'),
-        // actions: [
-        //   IconButton(
-        //     onPressed: () {
-        //       Navigator.of(context).pushNamed('/consumer');
-        //     },
-        //     icon: const Icon(Icons.navigate_next),
-        //   ),
-        // ],
+        actions: [
+          IconButton(
+            onPressed: () {
+              Navigator.of(context).pushNamed(Paths.jokesCategories);
+            },
+            icon: const Icon(Icons.navigate_next),
+          ),
+        ],
       ),
       body: Consumer<CounterProvider>(
         builder: (context, counter, child) {
